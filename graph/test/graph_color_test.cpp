@@ -14,6 +14,7 @@ TEST(GraphColor, firsttest) {
     edges.push_back(make_pair(1,3));
     GraphColor graph(vexnum);
     graph.init(edges);
+    graph.printForDebug();
     graph.setAllNodeColor();
     graph.printSolution();
 }
