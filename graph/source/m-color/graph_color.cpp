@@ -54,7 +54,7 @@ void GraphColor::setColoratNode(Node node) {
     do {
         flag = false;
         for(int i=0; i< nodeCount_; i++) {
-            if(matrix_[node.id()][i] && nodes_[i].color() == t) {
+            if(matrix_[node.id()][i] == 1 && nodes_[i].color() == t) {
                 flag = true;
                 t++;
                 break;
