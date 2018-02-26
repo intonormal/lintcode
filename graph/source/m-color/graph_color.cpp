@@ -10,14 +10,10 @@ GraphColor::GraphColor(int nodeCount) : nodeCount_(nodeCount) {}
 
 void GraphColor::init(vector<pair<int,int>> edges) {
     // allocate space
-    nodes_ = new Node[nodeCount_];
-
     setColorStatus_= new bool[nodeCount_];
-
+    nodes_ = new Node[nodeCount_];
     matrix_ = new int*[nodeCount_];
-
     for(int i=0; i<nodeCount_;i++) {
-        nodes_[i].init(i);
         setColorStatus_[i] = false;
         matrix_[i] = new int[nodeCount_]();
     }
@@ -29,6 +25,12 @@ void GraphColor::init(vector<pair<int,int>> edges) {
     }
 }
 
+void GraphColor::initNodeList(int* nodeNumList) {
+    for(int i=0; i<nodeCount_;i++) {
+        nodes_[i].init(nodeNumList[i]);
+    }
+}
+
 GraphColor::~GraphColor() {
     delete[] nodes_;
     for(int i = 0; i < nodeCount_; i++) {
@@ -36,11 +38,15 @@ GraphColor::~GraphColor() {
     }
     delete  matrix_;
 }
+
+
+
 void GraphColor::setAllNodeColor() {
     for(int i=0; i < nodeCount_; i++) {
         setColoratNode(nodes_[i]);
     }
 }
+
 void GraphColor::setColoratNode(Node node) {
     if (node.isSetColor()) return;
     int t = 1;

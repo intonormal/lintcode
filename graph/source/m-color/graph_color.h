@@ -12,9 +12,11 @@ struct GraphColor {
     void init(std::vector<std::pair<int,int>> edges);
     ~GraphColor();
     void setAllNodeColor();
-    void setColoratNode(Node node);
     void printSolution();
     void printForDebug();
+    void initNodeList(int *nodeNumList);
+    void setColoratNode(Node node);
+
 private:
     int nodeCount_;
     Node *nodes_;

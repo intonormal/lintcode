@@ -3,7 +3,8 @@
 //
 
 #include "gtest.h"
-#include "../source/m-color/graph_color.h"
+#include "../source/m-color/np_graph_color.h"
+
 using namespace std;
 
 TEST(GraphColor, firsttest) {
@@ -14,7 +15,6 @@ TEST(GraphColor, firsttest) {
     edges.push_back(make_pair(1,3));
     GraphColor graph(vexnum);
     graph.init(edges);
-    graph.printForDebug();
-    graph.setAllNodeColor();
-    graph.printSolution();
+    NPGraphColor npGraphColor;
+    npGraphColor.setColorForAllPermutation(4, graph);
 }
