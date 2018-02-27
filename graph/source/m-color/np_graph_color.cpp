@@ -14,6 +14,7 @@ void NPGraphColor::setColorForAllPermutation(int numofNode, GraphColor &graph) {
         graph.initNodeList(permutations[i]);
         graph.setAllNodeColor();
         graph.printSolution();
+        graph.clearColorSolution();
     }
 
     freeMemoryForAllPermutation(permutations, num);

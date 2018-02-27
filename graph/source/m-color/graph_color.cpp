@@ -10,11 +10,9 @@ GraphColor::GraphColor(int nodeCount) : nodeCount_(nodeCount) {}
 
 void GraphColor::init(vector<pair<int,int>> edges) {
     // allocate space
-    setColorStatus_= new bool[nodeCount_];
     nodes_ = new Node[nodeCount_];
     matrix_ = new int*[nodeCount_];
     for(int i=0; i<nodeCount_;i++) {
-        setColorStatus_[i] = false;
         matrix_[i] = new int[nodeCount_]();
     }
 
@@ -47,25 +45,51 @@ void GraphColor::setAllNodeColor() {
     }
 }
 
-void GraphColor::setColoratNode(Node node) {
-    if (node.isSetColor()) return;
-    int t = 1;
-    bool flag;
-    do {
-        flag = false;
-        for(int i=0; i< nodeCount_; i++) {
-            if(matrix_[node.id()][i] == 1 && nodes_[i].color() == t) {
-                flag = true;
-                t++;
-                break;
-            }
+void GraphColor::clearColorSolution() {
+    usedColor_.clear();
+}
+
+int GraphColor::selectColor(Node& node) {
+    if(usedColor_.size() == 0) {
+        usedColor_.insert(1);
+        return 1;
+    }
+    set<int> neighboreColor;
+    for(int i=0; i< nodeCount_; i++) {
+        if(matrix_[node.id()][i] == 1 && nodes_[i].color() != 0) {
+            neighboreColor.insert(nodes_[i].color());
         }
-    } while(flag);
-    nodes_[node.id()].setColor(t);
-    setColorStatus_[node.id()] = true;
+    }
+
+    for(auto it = usedColor_.begin(); it != usedColor_.end(); ++it) {
+        auto tempIter = neighboreColor.find(*it);
+        if(tempIter == neighboreColor.end()) {
+            return *it;
+        }
+    }
+
+    int color = 0;
+    for(auto it = usedColor_.begin(); it != usedColor_.end(); ++it) {
+        if(color < *it) {
+            color = *it;
+        }
+    }
+    usedColor_.insert(++color);
+    return color;
+}
+
+void GraphColor::setColoratNode(Node& node) {
+    if (node.isSetColor()) return;
+
+    int color = selectColor(node);
+    for(int i=0; i< nodeCount_; i++) {
+        if(nodes_[i].id() == node.id()) {
+            nodes_[i].setColor(color);
+        }
+    }
 
     for(int i=0; i<nodeCount_;i++) {
-        if(matrix_[node.id()][i] && !setColorStatus_[i]) {
+        if(matrix_[node.id()][i] == 1) {
             setColoratNode(nodes_[i]);
         }
     }
