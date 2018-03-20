@@ -14,17 +14,8 @@ enum Length_Unit {
     Inch = 1
 };
 
-
-struct Length {
-    Length(int num, Length_Unit unit);
-    bool operator==(const Length& right) const;
-
-private:
-    int toMinUnit() const;
-
-private:
-    int  num_;
-    Length_Unit unit_;
+struct Length : Measure<Length_Unit> {
+    Length(int num, Length_Unit unit) : Measure(num, unit) {}
 };
 
 
