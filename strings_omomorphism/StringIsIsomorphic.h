@@ -13,7 +13,7 @@ All occurrences of a character must be replaced with another character while pre
 
  注意事项
 
-You may assume both s and t have the same length.
+You may assume both s and t have the same Length.
 
 您在真实的面试中是否遇到过这个题？ Yes
 样例
