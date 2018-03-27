@@ -4,7 +4,7 @@
 
 #ifndef LINTCODE_MEASURE_H
 #define LINTCODE_MEASURE_H
-template< typename T>
+template< typename T, typename U>
 struct Measure {
     Measure(int num, T unit) : num_(num), unit_(unit) {/**/}
 
@@ -12,7 +12,15 @@ struct Measure {
         return this->toMinUnit() == right.toMinUnit();
     }
 
-private:
+    bool operator!=(const Measure& right) const {
+        return this->toMinUnit() != right.toMinUnit();
+    }
+
+    const Measure<T, U> operator+(const Measure<T, U>& right) const {
+        return Measure<T, U>(this->toMinUnit() + right.toMinUnit(), U::getMinUnit());
+    }
+
+protected:
     int toMinUnit() const {
         return num_ * unit_;
     }

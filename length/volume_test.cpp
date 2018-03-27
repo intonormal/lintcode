@@ -3,7 +3,7 @@
 //
 
 #include "gtest.h"
-#include "volume.h"
+#include "volume.hpp"
 
 TEST(volume_test, 1_TBSP_equal_to_3_TSP) {
     EXPECT_TRUE(Volume(1, TBSP) == Volume(3, TSP));
