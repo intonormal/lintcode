@@ -5,6 +5,8 @@
 #ifndef LINTCODE_MEASURE_H
 #define LINTCODE_MEASURE_H
 #include <string>
+#include <tuple>
+#include <vector>
 using namespace std;
 
 template< typename T, typename U>
@@ -25,13 +27,13 @@ struct Measure {
 
     const std::string print() const {
         vector<tuple<T, string, int>> data = U::init();
-        return do_print(num_, unit_, data);
+        return do_print(data);
     }
 
 private:
-    static string do_print(int num, T unit, vector<tuple<T, string, int>> data) {
+    string do_print(vector<tuple<T, string, int>> data) const {
         string result = "";
-        int temp = num*unit;
+        int temp = num_ * unit_;
         for(auto iter=data.begin(); iter != data.end(); iter++) {
             int ret = temp / get<2>(*iter);
             temp -= ret * get<2>(*iter);

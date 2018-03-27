@@ -7,8 +7,6 @@
 
 #include "measure.hpp"
 #include "common.h"
-#include <tuple>
-#include <vector>
 using namespace std;
 
 enum Length_Unit {
