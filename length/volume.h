@@ -7,6 +7,8 @@
 
 #include "measure.hpp"
 #include "common.h"
+#include <tuple>
+#include <vector>
 
 enum Volume_Unit {
     TSP = 1,
@@ -14,14 +16,12 @@ enum Volume_Unit {
     OZ = 2*TBSP
 };
 
+using vv_type = vector<tuple<Volume_Unit, string, int>>;
 struct Volume_Factor {
-    static Volume_Unit getMinUnit() {
-        return Volume_Unit::TSP;
-    }
+    static Volume_Unit getMinUnit();
+    static vv_type init();
 };
 
 using Volume = Measure<Volume_Unit, Volume_Factor>;
-
-
 
 #endif //LINTCODE_VOLUME_H

@@ -7,6 +7,9 @@
 
 #include "measure.hpp"
 #include "common.h"
+#include <tuple>
+#include <vector>
+using namespace std;
 
 enum Length_Unit {
     Inch = 1,
@@ -15,17 +18,12 @@ enum Length_Unit {
     Mile = 1760 * Yard
 };
 
-
+using lv_type = vector<tuple<Length_Unit, string, int>>;
 struct Length_Factor {
-    static Length_Unit getMinUnit() {
-        return Length_Unit::Inch;
-    }
+    static Length_Unit getMinUnit();
+    static lv_type init();
 };
 
-
-
-typedef Measure<Length_Unit, Length_Factor> Length;
-
-
+using Length = Measure<Length_Unit, Length_Factor>;
 
 #endif //LINTCODE_LENGTH_H

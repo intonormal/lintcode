@@ -3,7 +3,7 @@
 //
 
 #include "gtest.h"
-#include "length.hpp"
+#include "length.h"
 
 TEST(Compare_Length, 1_mile_equl_to_1760_yard) {
     EXPECT_TRUE(Length(1, Mile) == Length(1760, Yard));
@@ -55,6 +55,12 @@ TEST(Compare_Length, 1_Mile_not_equl_to_63361_Inch) {
 
 ////////////////////////////////////////////////////////////////////
 
-TEST(Compare_Length, 12_Inch_add_2_Feet_is_36_Inch) {
+TEST(Factor_Length, 12_Inch_add_2_Feet_is_36_Inch) {
     EXPECT_TRUE(Length(12, Inch) + Length(2, Feet) == Length(36, Inch));
+}
+
+////////////////////////////////////////////////////////////////////
+
+TEST(Print_Length, 35_Inch_is_2_2_Feet_11_Inch) {
+    EXPECT_TRUE(Length(35, Inch).print() == "2 Feet 11 Inch ");
 }
