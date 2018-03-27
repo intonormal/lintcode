@@ -5,7 +5,6 @@
 #ifndef LINTCODE_VOLUME_H
 #define LINTCODE_VOLUME_H
 #include "measure.hpp"
-#include "common.h"
 
 enum Volume_Unit {
     TSP = 1,

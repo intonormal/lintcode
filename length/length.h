@@ -4,10 +4,7 @@
 
 #ifndef LINTCODE_LENGTH_H
 #define LINTCODE_LENGTH_H
-
 #include "measure.hpp"
-#include "common.h"
-using namespace std;
 
 enum Length_Unit {
     Inch = 1,
