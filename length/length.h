@@ -19,6 +19,7 @@ enum Length_Unit {
 using lv_type = vector<tuple<Length_Unit, string, int>>;
 struct Length_Factor {
     static Length_Unit getMinUnit();
+    static string getMinUnitString();
     static lv_type init();
 };
 

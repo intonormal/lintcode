@@ -25,9 +25,13 @@ struct Measure {
         return Measure<T, U>(this->toMinUnit() + right.toMinUnit(), U::getMinUnit());
     }
 
-    const std::string print() const {
+    const std::string print_to_descending() const {
         vector<tuple<T, string, int>> data = U::init();
         return do_print(data);
+    }
+
+    const std::string print_to_minUnit() const {
+        return to_string(this->toMinUnit()) + " "+ U::getMinUnitString();
     }
 
 private:

@@ -31,5 +31,10 @@ TEST(Factor_Volume, 1_OZ_add_3_TBSP_is_15_TBSP) {
 ////////////////////////////////////////////////////////////////////
 
 TEST(Factor_Volume, 8_TSP_is_1_OZ_2_TSP) {
-    EXPECT_TRUE(Volume(8, TSP).print() == "1 OZ 2 TSP ");
+    EXPECT_TRUE(Volume(8, TSP).print_to_descending() == "1 OZ 2 TSP ");
+}
+
+
+TEST(Factor_Volume, 1_OZ_is_6_TSP) {
+    EXPECT_TRUE(Volume(1, OZ).print_to_minUnit() == "6 TSP");
 }

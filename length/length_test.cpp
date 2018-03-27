@@ -62,5 +62,14 @@ TEST(Factor_Length, 12_Inch_add_2_Feet_is_36_Inch) {
 ////////////////////////////////////////////////////////////////////
 
 TEST(Print_Length, 35_Inch_is_2_2_Feet_11_Inch) {
-    EXPECT_TRUE(Length(35, Inch).print() == "2 Feet 11 Inch ");
+    EXPECT_TRUE(Length(35, Inch).print_to_descending() == "2 Feet 11 Inch ");
+}
+
+
+TEST(Print_Length, 2_Inch_is_2_Inch) {
+    EXPECT_TRUE(Length(2, Inch).print_to_minUnit() == "2 Inch");
+}
+
+TEST(Print_Length, 2_Feet_is_24_Inch) {
+    EXPECT_TRUE(Length(2, Feet).print_to_minUnit() == "24 Inch");
 }

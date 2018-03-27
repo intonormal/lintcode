@@ -16,6 +16,7 @@ enum Volume_Unit {
 using vv_type = vector<tuple<Volume_Unit, string, int>>;
 struct Volume_Factor {
     static Volume_Unit getMinUnit();
+    static string getMinUnitString();
     static vv_type init();
 };
 
